@@ -1,3 +1,4 @@
+using Services.Localization;
 using Services.PersistentProgress;
 using Services.SaveLoad;
 using Services.SceneLoader;
@@ -18,6 +19,7 @@ namespace Bootstraper
             BindPersistentProgress();
             BindSaveLoadService();
             BindSceneLoader();
+            BindLocalizationService();
         }
         
         private void BindPersistentProgress()
@@ -36,6 +38,13 @@ namespace Bootstraper
         {
             SceneLoaderService sceneLoader = Container.InstantiatePrefabForComponent<SceneLoaderService>(_sceneLoader);
             Container.Bind<ISceneLoaderService>().To<SceneLoaderService>().FromInstance(sceneLoader).AsSingle();
+        }
+        
+        private void BindLocalizationService()
+        {
+            ILocalizationService localizationService = new LocalizationService(_progressService, _saveLoadService);
+            localizationService.LoadTranslations();
+            Container.BindInstance(localizationService).AsSingle();
         }
     }
 }

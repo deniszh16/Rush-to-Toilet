@@ -6,39 +6,29 @@ using Zenject;
 
 namespace Logic.UI
 {
-    public class LevelOpenButton : MonoBehaviour
+    public class LastLevelOpenButton : MonoBehaviour
     {
         [Header("Кнопка открытия")]
         [SerializeField] private Button _button;
-        [SerializeField] private Image _buttonImage;
-        [SerializeField] private Sprite _activeButton;
         
-        [Header("Номер уровня")]
-        [SerializeField] private int _number;
-
         private ISceneLoaderService _sceneLoaderService;
         private IPersistentProgressService _progressService;
-
+        
         [Inject]
         private void Construct(ISceneLoaderService sceneLoaderService, IPersistentProgressService progressService)
         {
             _sceneLoaderService = sceneLoaderService;
             _progressService = progressService;
         }
-
-        private void Awake()
-        {
-            if (_progressService.UserProgress.Progress >= _number)
-            {
-                _buttonImage.sprite = _activeButton;
-                _button.interactable = true;
-            }
-            
+        
+        private void Awake() =>
             _button.onClick.AddListener(GoToLevel);
-        }
 
-        private void GoToLevel() =>
-            _sceneLoaderService.LoadLevelAsync(_number);
+        private void GoToLevel()
+        {
+            int number = _progressService.UserProgress.Progress;
+            _sceneLoaderService.LoadLevelAsync(number);
+        }
 
         private void OnDestroy() =>
             _button.onClick.RemoveListener(GoToLevel);
