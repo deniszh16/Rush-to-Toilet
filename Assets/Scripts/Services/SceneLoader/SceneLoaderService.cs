@@ -8,39 +8,31 @@ namespace Services.SceneLoader
     {
         [Header("Экран затемнения")]
         [SerializeField] private CanvasGroup _blackout;
-        
-        private const float DimmingSpeed = 0.02f;
-        private const float DimmingStep = 0.1f;
-        
+
         public void LoadSceneAsync(Scenes scene, bool screensaver, float delay) =>
-            StartCoroutine(LoadSceneAsyncCoroutine(scene, screensaver, delay));
-        
-        private IEnumerator LoadSceneAsyncCoroutine(Scenes scene, bool screensaver, float delay)
+            _ = StartCoroutine(LoadSceneAsyncCoroutine(scene.ToString(), screensaver, delay));
+
+        public void LoadLevelAsync(int levelNumber) =>
+            _ = StartCoroutine(LoadSceneAsyncCoroutine(Scenes.Level + "_" + levelNumber, screensaver: true, delay: 0f));
+
+        private IEnumerator LoadSceneAsyncCoroutine(string scene, bool screensaver, float delay)
         {
             yield return new WaitForSeconds(delay);
 
             if (screensaver)
             {
                 _blackout.blocksRaycasts = true;
-                while (_blackout.alpha < 1)
-                {
-                    yield return new WaitForSeconds(DimmingSpeed);
-                    _blackout.alpha += DimmingStep;
-                }
+                _blackout.alpha = 1f;
             }
 
-            AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(scene.ToString());
+            AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(scene);
             while (asyncOperation.isDone != true)
                 yield return null;
 
             if (screensaver)
             {
                 _blackout.blocksRaycasts = false;
-                while (_blackout.alpha > 0)
-                {
-                    yield return new WaitForSeconds(DimmingSpeed);
-                    _blackout.alpha -= DimmingStep;
-                }
+                _blackout.alpha = 0;
             }
         }
     }
