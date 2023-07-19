@@ -8,13 +8,15 @@ namespace Data
         public int Score;
         public int Progress;
 
+        public SoundData SoundData;
         public LanguageData LanguageData;
-        
+
         public event Action ScoreChanged;
 
         public UserProgress()
         {
             Progress = 1;
+            SoundData = new SoundData();
             LanguageData = new LanguageData();
         }
 

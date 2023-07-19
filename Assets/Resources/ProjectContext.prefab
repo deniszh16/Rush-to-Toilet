@@ -75,3 +75,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _sceneLoader: {fileID: 1796065203499196023, guid: 7caeda4f437cd2346a623cc567342c5f, type: 3}
+  _soundService: {fileID: 5845518434328556451, guid: 00dcc3ce49eaa4148a0647559bd54acd, type: 3}
