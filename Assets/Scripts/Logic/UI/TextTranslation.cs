@@ -10,6 +10,9 @@ namespace Logic.UI
         [Header("Ключ перевода")]
         [SerializeField] private string _key;
         
+        [Header("Отключение автоперевода")]
+        [SerializeField] private bool _disableAutoTranslation;
+        
         [Header("Текстовый компонент")]
         [SerializeField] private TextMeshProUGUI _textComponent;
         
@@ -22,10 +25,13 @@ namespace Logic.UI
         private void Awake() => 
             _localizationService.LanguageChanged += TranslateText;
 
-        private void Start() =>
-            TranslateText();
+        private void Start()
+        {
+            if (_disableAutoTranslation == false)
+                TranslateText();
+        }
 
-        private void TranslateText() =>
+        public void TranslateText() =>
             _textComponent.text = _localizationService.GetTextTranslationByKey(_key);
         
         public void ChangeKey(string value)

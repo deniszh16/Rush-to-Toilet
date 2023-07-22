@@ -50,8 +50,8 @@ namespace Services.Sound
 
         public void BackgroundMusicActivation()
         {
-            if (MusicActivity && _audioSource.isPlaying == false) _audioSource.Play();
-            else _audioSource.Stop();
+            if (MusicActivity && _audioSource.isPlaying == false)
+                _audioSource.Play();
         }
     }
 }

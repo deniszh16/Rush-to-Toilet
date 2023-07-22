@@ -20,5 +20,8 @@ namespace Logic.Sounds
             if (_soundService.SoundActivity && _audioSource.isPlaying == false)
                 _audioSource.Play();
         }
+
+        public void StopSound() =>
+            _audioSource.Stop();
     }
 }

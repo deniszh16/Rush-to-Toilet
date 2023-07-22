@@ -7,7 +7,7 @@ namespace Logic.UI
 {
     public class ScoreCounter : MonoBehaviour
     {
-        [Header("Количество очков")]
+        [Header("Текстовый компонент")]
         [SerializeField] private TextMeshProUGUI _textComponent;
 
         private IPersistentProgressService _progressService;

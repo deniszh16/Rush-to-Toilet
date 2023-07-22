@@ -16,10 +16,12 @@ namespace Logic.Levels
         public LineRenderer LineRenderer => _line;
         
         public bool DrawingActivity { get; set; }
-
+        
+        public int AmountOfPoints { get; private set; }
+        
         private Vector3 _previousPosition;
         private Vector3 _currentPosition;
-        
+
         private const float MinDistance = 0.1f;
 
         private void Start()
@@ -58,5 +60,8 @@ namespace Logic.Levels
                 _previousPosition = _currentPosition;
             }
         }
+
+        public void RecordNumberOfPoints() =>
+            AmountOfPoints = _line.positionCount;
     }
 }

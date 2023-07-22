@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System;
+using Logic.Sounds;
+using UnityEngine;
 
 namespace Logic.Levels
 {
@@ -10,6 +12,9 @@ namespace Logic.Levels
         [Header("Анимация туалета")]
         [SerializeField] private Animator _animator;
         
+        [Header("Звук брызг")]
+        [SerializeField] private PlayingSound _playingSound;
+        
         private static readonly int PrepAnimation = Animator.StringToHash("Preparation");
         
         [Header("Эффект брызг")]
@@ -18,6 +23,8 @@ namespace Logic.Levels
         private Character _attachedCharacter;
 
         public ObjectColor ObjectColor => _objectColor;
+
+        public event Action ToiletIsFull;
 
         public void SetAttachedCharacter(Character character)
         {
@@ -30,9 +37,22 @@ namespace Logic.Levels
             _animator.SetTrigger(id: PrepAnimation);
             _spray.gameObject.SetActive(true);
             _spray.Play();
+            _playingSound.PlaySound();
         }
 
-        private void OnDestroy() =>
-            _attachedCharacter.Dived -= ShowToiletAnimation;
+        private void OnTriggerEnter2D(Collider2D col)
+        {
+            if (col.TryGetComponent(out Character character))
+            {
+                if (ObjectColor == character.ObjectColor)
+                    ToiletIsFull?.Invoke();
+            }
+        }
+
+        private void OnDestroy()
+        {
+            if (_attachedCharacter != null)
+                _attachedCharacter.Dived -= ShowToiletAnimation;
+        }
     }
 }

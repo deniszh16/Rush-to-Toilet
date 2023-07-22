@@ -1,4 +1,5 @@
 ﻿using System;
+using Logic.Sounds;
 using UnityEngine;
 
 namespace Logic.Levels
@@ -17,6 +18,9 @@ namespace Logic.Levels
 
         [Header("Дым столкновения")]
         [SerializeField] private ParticleSystem _clash;
+        
+        [Header("Звук шагов")]
+        [SerializeField] private PlayingSound _playingSound;
 
         public ObjectColor ObjectColor => _objectColor;
         public DrawWithMouse DrawWithMouse => _drawWithMouse;
@@ -33,6 +37,7 @@ namespace Logic.Levels
         private Vector3 _divingPosition;
 
         public event Action Dived;
+        public event Action Faced;
 
         private void Start()
         {
@@ -58,6 +63,7 @@ namespace Logic.Levels
                 if (_moveIndex > _positions.Length - 1)
                 {
                     _movement = false;
+                    _playingSound.StopSound();
                     SetAnimation(CharacterAnimations.Victory);
                 }
             }
@@ -79,6 +85,7 @@ namespace Logic.Levels
                     _clash.gameObject.SetActive(true);
                     _clash.Play();
                     SetAnimation(CharacterAnimations.Damage);
+                    Faced?.Invoke();
                 }
             }
         }
@@ -93,6 +100,7 @@ namespace Logic.Levels
         public void StartMovement()
         {
             _movement = true;
+            _playingSound.PlaySound();
             SetAnimation(CharacterAnimations.Run);
         }
 

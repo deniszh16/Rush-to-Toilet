@@ -64,6 +64,7 @@ namespace Logic.Levels
                         _activeCharacter.DrawWithMouse.DrawingActivity = false;
                         _activeCharacter.SetArrayOfPoints();
                         _activeCharacter.SetDivingPosition(toilet.transform.GetChild(0).position);
+                        _activeCharacter.DrawWithMouse.RecordNumberOfPoints();
                         _levelTasks.AddLine();
                         return;
                     }
