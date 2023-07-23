@@ -20,9 +20,9 @@ namespace Bootstraper
         {
             BindPersistentProgress();
             BindSaveLoadService();
+            BindLocalizationService();
             BindSceneLoader();
             BindSoundService();
-            BindLocalizationService();
         }
         
         private void BindPersistentProgress()

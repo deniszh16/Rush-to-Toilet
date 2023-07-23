@@ -63,7 +63,7 @@ namespace Logic.Levels
                         toilet.SetAttachedCharacter(_activeCharacter);
                         _activeCharacter.DrawWithMouse.DrawingActivity = false;
                         _activeCharacter.SetArrayOfPoints();
-                        _activeCharacter.SetDivingPosition(toilet.transform.GetChild(0).position);
+                        _activeCharacter.SetDivingPosition(toilet.transform.GetChild(1).position);
                         _activeCharacter.DrawWithMouse.RecordNumberOfPoints();
                         _levelTasks.AddLine();
                         return;

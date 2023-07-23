@@ -15,6 +15,7 @@ namespace Logic.Levels
         [Header("Компоненты персонажа")]
         [SerializeField] private Animator _animator;
         [SerializeField] private DrawWithMouse _drawWithMouse;
+        [SerializeField] private BoxCollider2D _boxCollider;
 
         [Header("Дым столкновения")]
         [SerializeField] private ParticleSystem _clash;
@@ -64,6 +65,7 @@ namespace Logic.Levels
                 {
                     _movement = false;
                     _playingSound.StopSound();
+                    _boxCollider.enabled = false;
                     SetAnimation(CharacterAnimations.Victory);
                 }
             }
@@ -77,17 +79,24 @@ namespace Logic.Levels
 
         private void OnTriggerEnter2D(Collider2D col)
         {
-            if (col.gameObject.TryGetComponent(out Character character))
+            if (col.TryGetComponent(out Character character))
             {
                 if (ObjectColor != character.ObjectColor)
-                {
-                    _movement = false;
-                    _clash.gameObject.SetActive(true);
-                    _clash.Play();
-                    SetAnimation(CharacterAnimations.Damage);
-                    Faced?.Invoke();
-                }
+                    CollisionWithAnObstacle();
             }
+
+            if (col.GetComponent<Obstacle>())
+                CollisionWithAnObstacle();
+        }
+
+        private void CollisionWithAnObstacle()
+        {
+            _movement = false;
+            _clash.gameObject.SetActive(true);
+            _clash.Play();
+            SetAnimation(CharacterAnimations.Damage);
+            _playingSound.StopSound();
+            Faced?.Invoke();
         }
 
         public void SetArrayOfPoints()

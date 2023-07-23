@@ -2,7 +2,7 @@
 
 namespace Logic.Levels
 {
-    public class Wall : MonoBehaviour
+    public class Obstacle : MonoBehaviour
     {
     }
 }

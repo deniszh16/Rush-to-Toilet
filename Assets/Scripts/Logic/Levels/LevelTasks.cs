@@ -35,6 +35,7 @@ namespace Logic.Levels
 
         private int _linesDrawn;
         private int _crowdedToilets;
+        private bool _losing;
 
         private IPersistentProgressService _progressService;
         private ISaveLoadService _saveLoadService;
@@ -107,8 +108,13 @@ namespace Logic.Levels
             _saveLoadService.SaveProgress();
         }
 
-        private void ActivateLosing() =>
-            _ = StartCoroutine(ShowLosingPanel());
+        private void ActivateLosing()
+        {
+            if (_losing == false)
+                _ = StartCoroutine(ShowLosingPanel());
+
+            _losing = true;
+        }
 
         private IEnumerator ShowLosingPanel()
         {
