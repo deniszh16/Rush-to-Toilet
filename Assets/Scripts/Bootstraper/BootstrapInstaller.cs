@@ -1,3 +1,4 @@
+using Services.Achievements;
 using Services.Localization;
 using Services.PersistentProgress;
 using Services.SaveLoad;
@@ -12,6 +13,7 @@ namespace Bootstraper
     {
         [SerializeField] private SceneLoaderService _sceneLoader;
         [SerializeField] private SoundService _soundService;
+        [SerializeField] private AchievementsService _achievementsService;
         
         private IPersistentProgressService _progressService;
         private ISaveLoadService _saveLoadService;
@@ -23,6 +25,7 @@ namespace Bootstraper
             BindLocalizationService();
             BindSceneLoader();
             BindSoundService();
+            BindAchievementsService();
         }
         
         private void BindPersistentProgress()
@@ -54,6 +57,13 @@ namespace Bootstraper
             ILocalizationService localizationService = new LocalizationService(_progressService, _saveLoadService);
             localizationService.LoadTranslations();
             Container.BindInstance(localizationService).AsSingle();
+        }
+        
+        private void BindAchievementsService()
+        {
+            AchievementsService achievementsService =
+                Container.InstantiatePrefabForComponent<AchievementsService>(_achievementsService);
+            Container.Bind<IAchievementsService>().To<AchievementsService>().FromInstance(achievementsService).AsSingle();
         }
     }
 }

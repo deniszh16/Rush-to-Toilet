@@ -9,6 +9,9 @@ namespace Data
         public int Score;
         public int Progress;
 
+        public int LabyrinthLevels;
+        public int LevelsWithThreeCharacters;
+
         public List<int> Attempts;
         
         public int Hints;
@@ -16,6 +19,7 @@ namespace Data
 
         public SoundData SoundData;
         public LanguageData LanguageData;
+        public AchievementsData AchievementsData;
 
         public event Action ScoreChanged;
         public event Action HintsChanged;
@@ -28,6 +32,7 @@ namespace Data
             Attempts = new List<int>();
             SoundData = new SoundData();
             LanguageData = new LanguageData();
+            AchievementsData = new AchievementsData();
         }
 
         public void ChangeScore(int value)
@@ -54,6 +59,18 @@ namespace Data
                 return;
             
             Attempts[levelNumber - 1] += 1;
+        }
+
+        public int GetLevelsPassedOnFirstTry()
+        {
+            int quantity = 0;
+            foreach (int attempt in Attempts)
+            {
+                if (attempt == 1)
+                    quantity++;
+            }
+
+            return quantity;
         }
     }
 }

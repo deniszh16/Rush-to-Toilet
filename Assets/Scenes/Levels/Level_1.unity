@@ -3163,6 +3163,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _number: 1
+  _labyrinth: 0
   _characters:
   - {fileID: 1678203056}
   - {fileID: 1157629264}

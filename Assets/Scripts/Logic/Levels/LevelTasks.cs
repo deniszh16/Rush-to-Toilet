@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using Logic.Sounds;
+using Services.Achievements;
 using Services.PersistentProgress;
 using Services.SaveLoad;
 using UnityEngine;
@@ -11,6 +12,9 @@ namespace Logic.Levels
     {
         [Header("Номер уровня")]
         [SerializeField] private int _number;
+        
+        [Header("Уровень лабиринт")]
+        [SerializeField] private bool _labyrinth;
 
         [Header("Персонажи уровня")]
         [SerializeField] private Character[] _characters;
@@ -36,15 +40,18 @@ namespace Logic.Levels
         private int _linesDrawn;
         private int _crowdedToilets;
         private bool _losing;
-
+        
         private IPersistentProgressService _progressService;
         private ISaveLoadService _saveLoadService;
+        private IAchievementsService _achievementsService;
 
         [Inject]
-        private void Construct(IPersistentProgressService progressService, ISaveLoadService saveLoadService)
+        private void Construct(IPersistentProgressService progressService, ISaveLoadService saveLoadService,
+            IAchievementsService achievementsService)
         {
             _progressService = progressService;
             _saveLoadService = saveLoadService;
+            _achievementsService = achievementsService;
         }
 
         private void Start()
@@ -103,17 +110,27 @@ namespace Logic.Levels
             
             if (_progressService.UserProgress.Progress <= _number) 
                 _progressService.UserProgress.Progress += 1;
+
+            if (_labyrinth) _progressService.UserProgress.LabyrinthLevels += 1;
+            if (_characters.Length >= 3) _progressService.UserProgress.LevelsWithThreeCharacters += 1;
             
             _progressService.UserProgress.AddAttempt(_number, victory: true);
             _saveLoadService.SaveProgress();
+            _achievementsService.StartAchievementCheck();
         }
 
-        private void ActivateLosing()
+        private void ActivateLosing(GameObject reasonLosing)
         {
-            if (_losing == false)
-                _ = StartCoroutine(ShowLosingPanel());
-
+            if (_losing) return;
+            
+            _ = StartCoroutine(ShowLosingPanel());
             _losing = true;
+            
+            if (reasonLosing.GetComponent<Character>())
+                _achievementsService.UnlockAchievement(2);
+
+            if (reasonLosing.GetComponent<Poop>())
+                _achievementsService.UnlockAchievement(5);
         }
 
         private IEnumerator ShowLosingPanel()

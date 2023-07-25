@@ -36,6 +36,7 @@ namespace Logic.UI
             {
                 _hints.SetActive(true);
                 _progressService.UserProgress.ChangeHints(value: -1);
+                _progressService.UserProgress.HintsUsed += 1;
                 _saveLoadService.SaveProgress();
             }
             else

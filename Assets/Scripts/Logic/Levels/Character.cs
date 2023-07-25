@@ -38,7 +38,7 @@ namespace Logic.Levels
         private Vector3 _divingPosition;
 
         public event Action Dived;
-        public event Action Faced;
+        public event Action<GameObject> Faced;
 
         private void Start()
         {
@@ -82,21 +82,21 @@ namespace Logic.Levels
             if (col.TryGetComponent(out Character character))
             {
                 if (ObjectColor != character.ObjectColor)
-                    CollisionWithAnObstacle();
+                    CollisionWithAnObstacle(character.gameObject);
             }
 
-            if (col.GetComponent<Obstacle>())
-                CollisionWithAnObstacle();
+            if (col.TryGetComponent(out Obstacle obstacle))
+                CollisionWithAnObstacle(obstacle.gameObject);
         }
 
-        private void CollisionWithAnObstacle()
+        private void CollisionWithAnObstacle(GameObject collision)
         {
             _movement = false;
             _clash.gameObject.SetActive(true);
             _clash.Play();
             SetAnimation(CharacterAnimations.Damage);
             _playingSound.StopSound();
-            Faced?.Invoke();
+            Faced?.Invoke(collision);
         }
 
         public void SetArrayOfPoints()
