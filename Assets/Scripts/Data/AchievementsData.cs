@@ -1,7 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Data
 {
+    [Serializable]
     public class AchievementsData
     {
         public List<bool> Achievements;

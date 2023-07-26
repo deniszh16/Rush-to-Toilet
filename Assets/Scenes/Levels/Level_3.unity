@@ -4086,6 +4086,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _number: 3
+  _labyrinth: 0
   _characters:
   - {fileID: 1678203056}
   - {fileID: 1157629264}
@@ -13669,7 +13670,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6329305970296301628, guid: 921da23d8f5fc884bb405d5055d6b75d, type: 3}
       propertyPath: m_LocalScale.x
-      value: 20
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 6329305970296301628, guid: 921da23d8f5fc884bb405d5055d6b75d, type: 3}
       propertyPath: m_LocalPosition.x

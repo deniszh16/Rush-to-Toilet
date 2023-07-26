@@ -1,11 +1,11 @@
 ﻿using Services.PersistentProgress;
+using Services.Localization;
 using Services.SceneLoader;
 using Services.SaveLoad;
+using Services.Sound;
 using UnityEngine;
 using Zenject;
 using Data;
-using Services.Localization;
-using Services.Sound;
 
 namespace Bootstraper
 {

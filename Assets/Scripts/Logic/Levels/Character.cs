@@ -51,14 +51,14 @@ namespace Logic.Levels
             if (_movement)
             {
                 Vector2 currentPosition = _positions[_moveIndex];
-                _parent.transform.position = Vector2.MoveTowards(_parent.transform.position, 
+                _parent.position = Vector2.MoveTowards(_parent.position, 
                     currentPosition, _speed * Time.deltaTime);
 
-                _parent.transform.rotation = currentPosition.x > _parent.transform.position.x
+                _parent.rotation = currentPosition.x > _parent.position.x
                     ? Quaternion.Euler(Vector3.zero)
                     : Quaternion.Euler(_moveToLeft);
                 
-                float distance = Vector2.Distance(currentPosition, _parent.transform.position);
+                float distance = Vector2.Distance(currentPosition, _parent.position);
                 if (distance < 0.05f) _moveIndex++;
 
                 if (_moveIndex > _positions.Length - 1)
@@ -72,7 +72,7 @@ namespace Logic.Levels
 
             if (_dive)
             {
-                _parent.transform.position = Vector2.MoveTowards(_parent.transform.position, 
+                _parent.position = Vector2.MoveTowards(_parent.position, 
                     _divingPosition, _diveSpeed * Time.deltaTime);
             }
         }
@@ -87,6 +87,18 @@ namespace Logic.Levels
 
             if (col.TryGetComponent(out Obstacle obstacle))
                 CollisionWithAnObstacle(obstacle.gameObject);
+
+            if (col.TryGetComponent(out Plunger plunger))
+            {
+                if (plunger.ObjectColor == ObjectColor)
+                    plunger.ActivatePlunger();
+            }
+
+            if (col.TryGetComponent(out Animal animal))
+            {
+                animal.AttackCharacter(gameObject.transform);
+                CollisionWithAnObstacle(animal.gameObject);
+            }
         }
 
         private void CollisionWithAnObstacle(GameObject collision)

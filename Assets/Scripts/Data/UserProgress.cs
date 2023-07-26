@@ -54,11 +54,9 @@ namespace Data
                 Attempts.Add(1);
                 return;
             }
-
-            if (levelNumber < Progress && victory)
-                return;
             
-            Attempts[levelNumber - 1] += 1;
+            if (levelNumber >= Progress && victory == false)
+                Attempts[levelNumber - 1] += 1;
         }
 
         public int GetLevelsPassedOnFirstTry()
