@@ -137,3 +137,26 @@ MonoBehaviour:
       10 \u0443\u0440\u043E\u0432\u043D\u0435\u0439 \u0441 \u043F\u0435\u0440\u0432\u043E\u0439
       \u043F\u043E\u043F\u044B\u0442\u043A\u0438."
     English: Successfully complete 10 levels on the first attempt.
+  - Key: achievement_11
+    Russian: "\u0421\u043F\u043B\u043E\u0448\u043D\u044B\u0435 \u043B\u0438\u043D\u0438\u0438"
+    English: Solid lines
+  - Key: achievement_desc_11
+    Russian: "\u041D\u0430\u0440\u0438\u0441\u043E\u0432\u0430\u0442\u044C 70 \u043B\u0438\u043D\u0438\u0439
+      \u043D\u0430 \u0443\u0440\u043E\u0432\u043D\u044F\u0445."
+    English: Draw 70 lines in levels.
+  - Key: achievement_12
+    Russian: "\u0425\u0443\u0434\u043E\u0436\u043D\u0438\u043A"
+    English: Artist
+  - Key: achievement_desc_12
+    Russian: "\u041D\u0430\u0440\u0438\u0441\u043E\u0432\u0430\u0442\u044C 150 \u043B\u0438\u043D\u0438\u0439
+      \u043D\u0430 \u0443\u0440\u043E\u0432\u043D\u044F\u0445."
+    English: Draw 150 lines in levels.
+  - Key: info_1
+    Russian: "\u041D\u043E\u0432\u044B\u0435 \u0443\u0440\u043E\u0432\u043D\u0438
+      \u0432 \u0440\u0430\u0437\u0440\u0430\u0431\u043E\u0442\u043A\u0435."
+    English: New levels in development.
+  - Key: info_2
+    Russian: "\u041D\u0430\u043F\u0438\u0448\u0438\u0442\u0435 \u0432 \u043E\u0442\u0437\u044B\u0432\u0430\u0445
+      \u043A\u0430\u043A\u0438\u0445 \u0443\u0440\u043E\u0432\u043D\u0435\u0439 \u0432\u044B
+      \u0436\u0434\u0435\u0442\u0435 \u0431\u043E\u043B\u044C\u0448\u0435."
+    English: Write in the reviews what levels you are looking forward to more.

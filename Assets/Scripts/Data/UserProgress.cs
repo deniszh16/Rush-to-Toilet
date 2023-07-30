@@ -11,6 +11,7 @@ namespace Data
 
         public int LabyrinthLevels;
         public int LevelsWithThreeCharacters;
+        public int DrawnLines;
 
         public List<int> Attempts;
         

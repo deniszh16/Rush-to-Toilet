@@ -1,71 +1,29 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Logic.Levels
 {
-    public class Animal : MonoBehaviour
+    public abstract class Animal : MonoBehaviour
     {
-        [Header("Точки для перемещения")]
-        [SerializeField] private Transform[] _points;
-
         [Header("Скорость движения")]
-        [SerializeField] private float _speed;
-        
-        [Header("Пауза при повороте")]
-        [SerializeField] private float _pause;
-        
+        [SerializeField] protected float _speed;
+
         [Header("Необходимые компоненты")]
-        [SerializeField] private Transform _transform;
-        [SerializeField] private Transform _childObjectTransform;
-        [SerializeField] private Animator _animator;
+        [SerializeField] protected Transform _transform;
+        [SerializeField] protected Transform _childObjectTransform;
+        [SerializeField] protected Animator _animator;
         
-        private static readonly int IdleAnimation = Animator.StringToHash("Idle");
-        private static readonly int AttackAnimation = Animator.StringToHash("Attack");
-        private static readonly int WalkAnimation = Animator.StringToHash("Walk");
+        protected static readonly int IdleAnimation = Animator.StringToHash("Idle");
+        protected static readonly int AttackAnimation = Animator.StringToHash("Attack");
+        protected static readonly int WalkAnimation = Animator.StringToHash("Walk");
+        protected static readonly int DeadAnimation = Animator.StringToHash("Dead");
 
-        private bool _movement;
-        private int _currentPoint;
-        private Vector3 _moveToLeft;
+        protected bool _movement;
+        protected Vector3 _moveToLeft;
 
-        private void Start()
-        {
-            _movement = true;
-            _currentPoint = 0;
+        protected virtual void Start() =>
             _moveToLeft = new(0f, 180f, 0f);
-            SetAnimation(WalkAnimation);
-        }
 
-        private void Update()
-        {
-            Debug.Log(_childObjectTransform.rotation);
-            
-            
-            if (_movement == false)
-                return;
-            
-            if (_transform.position != _points[_currentPoint].position)
-            {
-                _transform.position =
-                    Vector3.MoveTowards(_transform.position, _points[_currentPoint].position, _speed * Time.deltaTime);
-            }
-            else
-            {
-                _movement = false;
-                SetAnimation(IdleAnimation);
-                _ = StartCoroutine(PauseBetweenMovement());
-            }
-        }
-
-        private IEnumerator PauseBetweenMovement()
-        {
-            yield return new WaitForSeconds(_pause);
-            _currentPoint = _currentPoint < _points.Length - 1 ? ++_currentPoint : 0;
-            RotateObject(_points[_currentPoint].position);
-            SetAnimation(WalkAnimation);
-            _movement = true;
-        }
-
-        private void SetAnimation(int animationClip) =>
+        protected void SetAnimation(int animationClip) =>
             _animator.SetTrigger(animationClip);
 
         public void AttackCharacter(Transform character)
@@ -76,7 +34,7 @@ namespace Logic.Levels
             _movement = false;
         }
 
-        private void RotateObject(Vector3 point)
+        protected void RotateObject(Vector3 point)
         {
             _childObjectTransform.rotation = _transform.position.x > point.x
                 ? Quaternion.Euler(Vector3.zero)

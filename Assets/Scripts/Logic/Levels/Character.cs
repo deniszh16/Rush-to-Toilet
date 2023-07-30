@@ -37,6 +37,7 @@ namespace Logic.Levels
         private readonly float _diveSpeed = 3f;
         private Vector3 _divingPosition;
 
+        public event Action Moving;
         public event Action Dived;
         public event Action<GameObject> Faced;
 
@@ -121,6 +122,7 @@ namespace Logic.Levels
         public void StartMovement()
         {
             _movement = true;
+            Moving?.Invoke();
             _playingSound.PlaySound();
             SetAnimation(CharacterAnimations.Run);
         }

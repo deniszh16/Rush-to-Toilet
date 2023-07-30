@@ -66,9 +66,14 @@ namespace Services.Achievements
                 UnlockAchievement(number: 9);
             }
             
-            if (CheckAchievement(number: 10) == false && _persistentProgress.UserProgress.GetLevelsPassedOnFirstTry() >= 10)
+            if (CheckAchievement(number: 11) == false && _persistentProgress.UserProgress.DrawnLines >= 70)
             {
-                UnlockAchievement(number: 10);
+                UnlockAchievement(number: 11);
+            }
+            
+            if (CheckAchievement(number: 12) == false && _persistentProgress.UserProgress.DrawnLines >= 120)
+            {
+                UnlockAchievement(number: 12);
             }
         }
 

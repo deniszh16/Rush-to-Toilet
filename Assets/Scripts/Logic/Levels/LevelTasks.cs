@@ -113,6 +113,7 @@ namespace Logic.Levels
 
             if (_labyrinth) _progressService.UserProgress.LabyrinthLevels += 1;
             if (_characters.Length >= 3) _progressService.UserProgress.LevelsWithThreeCharacters += 1;
+            _progressService.UserProgress.DrawnLines += _linesDrawn;
             
             _progressService.UserProgress.AddAttempt(_number, victory: true);
             _saveLoadService.SaveProgress();
@@ -142,6 +143,7 @@ namespace Logic.Levels
             
             _progressService.UserProgress.Score += 1;
             _progressService.UserProgress.AddAttempt(_number, victory: false);
+            _progressService.UserProgress.DrawnLines += _linesDrawn;
             _saveLoadService.SaveProgress();
         }
 

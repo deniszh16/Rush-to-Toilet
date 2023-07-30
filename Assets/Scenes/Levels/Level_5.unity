@@ -1264,6 +1264,39 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &240479047
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 240479048}
+  m_Layer: 0
+  m_Name: Poop
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &240479048
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 240479047}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1106872245}
+  - {fileID: 206414070}
+  m_Father: {fileID: 1077462613}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &241626874
 GameObject:
   m_ObjectHideFlags: 0
@@ -3672,6 +3705,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _number: 5
+  _labyrinth: 0
   _characters:
   - {fileID: 1678203056}
   - {fileID: 1157629264}
@@ -6110,7 +6144,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1077462613}
   m_Layer: 0
-  m_Name: Objects
+  m_Name: Obstacles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6129,8 +6163,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1106872245}
-  - {fileID: 206414070}
+  - {fileID: 240479048}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1086250255
@@ -11327,7 +11360,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1077462613}
+    m_TransformParent: {fileID: 240479048}
     m_Modifications:
     - target: {fileID: 2165154136695914448, guid: 14b46f4de6e9dc24592bec1b96030005, type: 3}
       propertyPath: m_LocalPosition.x
@@ -11347,15 +11380,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2165154136695914448, guid: 14b46f4de6e9dc24592bec1b96030005, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 2165154136695914448, guid: 14b46f4de6e9dc24592bec1b96030005, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 2165154136695914448, guid: 14b46f4de6e9dc24592bec1b96030005, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 2165154136695914448, guid: 14b46f4de6e9dc24592bec1b96030005, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -11516,7 +11549,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1077462613}
+    m_TransformParent: {fileID: 240479048}
     m_Modifications:
     - target: {fileID: 2165154136695914448, guid: 14b46f4de6e9dc24592bec1b96030005, type: 3}
       propertyPath: m_LocalPosition.x
@@ -11536,15 +11569,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2165154136695914448, guid: 14b46f4de6e9dc24592bec1b96030005, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 2165154136695914448, guid: 14b46f4de6e9dc24592bec1b96030005, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 2165154136695914448, guid: 14b46f4de6e9dc24592bec1b96030005, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 2165154136695914448, guid: 14b46f4de6e9dc24592bec1b96030005, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

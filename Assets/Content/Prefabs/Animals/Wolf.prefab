@@ -210,7 +210,7 @@ GameObject:
   - component: {fileID: 4453333723469502551}
   - component: {fileID: 4698843559908567485}
   - component: {fileID: 5298622657194453781}
-  - component: {fileID: 6670425783702731075}
+  - component: {fileID: 1112069862227512707}
   m_Layer: 6
   m_Name: Wolf
   m_TagString: Untagged
@@ -291,7 +291,7 @@ CapsuleCollider2D:
   m_Offset: {x: -0.5, y: 1.5}
   m_Size: {x: 6.5, y: 3.2}
   m_Direction: 1
---- !u!114 &6670425783702731075
+--- !u!114 &1112069862227512707
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -300,17 +300,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 5857921848725118997}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 89e34839ed2b4189ad7847e95b6ac830, type: 3}
+  m_Script: {fileID: 11500000, guid: af09ae7bddcc477fbb4ef186c32e9619, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _points:
-  - {fileID: 0}
-  - {fileID: 0}
-  _speed: 1.8
-  _pause: 2.2
+  _speed: 2.2
   _transform: {fileID: 4453333723469502551}
   _childObjectTransform: {fileID: 4165460516148636039}
   _animator: {fileID: 4698843559908567485}
+  _points:
+  - {fileID: 0}
+  - {fileID: 0}
+  _pause: 2
 --- !u!1 &6486899940114792830
 GameObject:
   m_ObjectHideFlags: 0
