@@ -96,6 +96,7 @@ namespace Logic.Levels
             }
             
             UpdateProgress();
+            ShowAds();
         }
 
         private void UpdateProgress()
@@ -140,11 +141,18 @@ namespace Logic.Levels
             _losingPanel.SetActive(true);
             _audioSource.clip = _losingSound;
             _playingSound.PlaySound();
-            
+
             _progressService.UserProgress.Score += 1;
             _progressService.UserProgress.AddAttempt(_number, victory: false);
             _progressService.UserProgress.DrawnLines += _linesDrawn;
             _saveLoadService.SaveProgress();
+            ShowAds();
+        }
+
+        private void ShowAds()
+        {
+            //if (_number % 2 == 0)
+                //YandexGame.FullscreenShow();
         }
 
         private void OnDestroy()

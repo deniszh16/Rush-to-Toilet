@@ -45,7 +45,10 @@ namespace Logic.Levels
             if (col.TryGetComponent(out Character character))
             {
                 if (ObjectColor == character.ObjectColor)
+                {
+                    character.DisableCollider();
                     ToiletIsFull?.Invoke();
+                }
             }
         }
 

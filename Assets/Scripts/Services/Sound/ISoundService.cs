@@ -12,6 +12,6 @@ namespace Services.Sound
         
         public void SwitchSound();
         public void SwitchMusic();
-        public void BackgroundMusicActivation();
+        public void BackgroundMusicActivation(bool state);
     }
 }

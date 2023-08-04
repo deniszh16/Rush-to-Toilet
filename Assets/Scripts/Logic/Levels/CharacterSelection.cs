@@ -19,15 +19,19 @@ namespace Logic.Levels
 
         private void Update()
         {
-            _hit = CheckCollision();
-            
             if (Input.GetMouseButtonDown(0))
+            {
+                _hit = CheckCollision();
                 SelectCharacter();
+            }
 
             if (_drawing)
             {
                 if (Input.GetMouseButtonUp(0))
+                {
+                    _hit = CheckCollision();
                     CheckFinish();
+                }
             }
         }
 
@@ -44,9 +48,12 @@ namespace Logic.Levels
             {
                 if (_hit.collider.TryGetComponent(out Character character))
                 {
-                    _drawing = true;
                     _activeCharacter = character;
-                    _activeCharacter.DrawWithMouse.DrawingActivity = true;
+                    if (_activeCharacter.CompletedRoute == false)
+                    {
+                        _drawing = true;
+                        _activeCharacter.DrawWithMouse.DrawingActivity = true;
+                    }
                 }
             }
         }
@@ -61,6 +68,7 @@ namespace Logic.Levels
                     {
                         _drawing = false;
                         toilet.SetAttachedCharacter(_activeCharacter);
+                        _activeCharacter.CompletedRoute = true;
                         _activeCharacter.DrawWithMouse.DrawingActivity = false;
                         _activeCharacter.SetArrayOfPoints();
                         _activeCharacter.SetDivingPosition(toilet.transform.GetChild(1).position);

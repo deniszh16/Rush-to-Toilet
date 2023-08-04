@@ -44,12 +44,18 @@ namespace Services.Sound
             MusicActivity = !activity;
             _progressService.UserProgress.SoundData.ChangeActivityOfMusic(MusicActivity);
             _saveLoadService.SaveProgress();
-            BackgroundMusicActivation();
+            BackgroundMusicActivation(MusicActivity);
             MusicChanged?.Invoke();
         }
 
-        public void BackgroundMusicActivation()
+        public void BackgroundMusicActivation(bool state)
         {
+            if (state == false)
+            {
+                _audioSource.Stop();
+                return;
+            }
+
             if (MusicActivity && _audioSource.isPlaying == false)
                 _audioSource.Play();
         }

@@ -187,6 +187,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3676847406720875188}
   - component: {fileID: 6394683890325109714}
+  - component: {fileID: 5110052347626425139}
   - component: {fileID: 5188797444983240402}
   - component: {fileID: 3139900691502915551}
   m_Layer: 6
@@ -234,6 +235,33 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!50 &5110052347626425139
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3329523709334626024}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!70 &5188797444983240402
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -267,7 +295,7 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -0.5, y: 2}
-  m_Size: {x: 5, y: 3}
+  m_Size: {x: 5, y: 2.5}
   m_Direction: 1
 --- !u!114 &3139900691502915551
 MonoBehaviour:
@@ -281,10 +309,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16e722278c194c33be5ca6fa78f1e763, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 2.2
+  _speed: 2
   _transform: {fileID: 3676847406720875188}
   _childObjectTransform: {fileID: 1899379205237806597}
   _animator: {fileID: 6394683890325109714}
+  _capsuleCollider: {fileID: 5188797444983240402}
   _character: {fileID: 0}
 --- !u!1 &4771346661849336293
 GameObject:

@@ -13,6 +13,6 @@ namespace Logic.Sounds
             _soundService = soundService;
 
         private void Start() =>
-            _soundService.BackgroundMusicActivation();
+            _soundService.BackgroundMusicActivation(_soundService.MusicActivity);
     }
 }

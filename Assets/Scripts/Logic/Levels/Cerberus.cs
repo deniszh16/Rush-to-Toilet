@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 namespace Logic.Levels
 {
@@ -16,7 +17,7 @@ namespace Logic.Levels
 
         private void Update()
         {
-            if (_movement == false)
+            if (Movement == false)
                 return;
             
             float distance = Vector2.Distance(_transform.position, _character.transform.parent.position);
@@ -26,18 +27,45 @@ namespace Logic.Levels
                 _transform.position = Vector2.MoveTowards(_transform.position,
                     _character.transform.parent.position, _speed * Time.deltaTime);
             }
+            else
+            {
+                StopMovement();
+            }
+        }
+
+        private void OnTriggerEnter2D(Collider2D col)
+        {
+            if (col.GetComponent<Obstacle>())
+            {
+                Movement = false;
+                _capsuleCollider.enabled = false;
+                SetAnimation(DeadAnimation);
+            }
         }
 
         private void StartMovement()
         {
-            _movement = true;
+            Movement = true;
             SetAnimation(WalkAnimation);
+            _ = StartCoroutine(RotateObjectCoroutine());
         }
 
         private void StopMovement()
         {
-            _movement = false;
+            Movement = false;
             SetAnimation(IdleAnimation);
+            StopAllCoroutines();
+        }
+        
+        private IEnumerator RotateObjectCoroutine()
+        {
+            WaitForSeconds seconds = new WaitForSeconds(0.1f);
+            
+            while (Movement)
+            {
+                yield return seconds;
+                RotateObject(_character.transform.position);
+            }
         }
 
         private void OnDestroy()

@@ -16,14 +16,14 @@ namespace Logic.Levels
         protected override void Start()
         {
             base.Start();
-            _movement = true;
+            Movement = true;
             _currentPoint = 0;
             SetAnimation(WalkAnimation);
         }
 
         private void Update()
         {
-            if (_movement == false)
+            if (Movement == false)
                 return;
             
             if (_transform.position != _points[_currentPoint].position)
@@ -33,7 +33,7 @@ namespace Logic.Levels
             }
             else
             {
-                _movement = false;
+                Movement = false;
                 SetAnimation(IdleAnimation);
                 _ = StartCoroutine(PauseBetweenMovement());
             }
@@ -45,7 +45,7 @@ namespace Logic.Levels
             _currentPoint = _currentPoint < _points.Length - 1 ? ++_currentPoint : 0;
             RotateObject(_points[_currentPoint].position);
             SetAnimation(WalkAnimation);
-            _movement = true;
+            Movement = true;
         }
     }
 }

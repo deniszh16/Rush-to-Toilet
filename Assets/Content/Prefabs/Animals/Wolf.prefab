@@ -307,6 +307,7 @@ MonoBehaviour:
   _transform: {fileID: 4453333723469502551}
   _childObjectTransform: {fileID: 4165460516148636039}
   _animator: {fileID: 4698843559908567485}
+  _capsuleCollider: {fileID: 5298622657194453781}
   _points:
   - {fileID: 0}
   - {fileID: 0}

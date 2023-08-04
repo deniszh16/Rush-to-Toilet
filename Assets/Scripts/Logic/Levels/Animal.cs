@@ -10,15 +10,16 @@ namespace Logic.Levels
         [Header("Необходимые компоненты")]
         [SerializeField] protected Transform _transform;
         [SerializeField] protected Transform _childObjectTransform;
+        [SerializeField] protected CapsuleCollider2D _capsuleCollider;
         [SerializeField] protected Animator _animator;
-        
+
         protected static readonly int IdleAnimation = Animator.StringToHash("Idle");
-        protected static readonly int AttackAnimation = Animator.StringToHash("Attack");
+        private static readonly int AttackAnimation = Animator.StringToHash("Attack");
         protected static readonly int WalkAnimation = Animator.StringToHash("Walk");
         protected static readonly int DeadAnimation = Animator.StringToHash("Dead");
 
-        protected bool _movement;
-        protected Vector3 _moveToLeft;
+        protected bool Movement;
+        private Vector3 _moveToLeft;
 
         protected virtual void Start() =>
             _moveToLeft = new(0f, 180f, 0f);
@@ -26,12 +27,12 @@ namespace Logic.Levels
         protected void SetAnimation(int animationClip) =>
             _animator.SetTrigger(animationClip);
 
-        public void AttackCharacter(Transform character)
+        public void AttackCharacter(Transform transformCharacter)
         {
             StopAllCoroutines();
-            RotateObject(character.transform.position);
+            RotateObject(transformCharacter.transform.position);
             SetAnimation(AttackAnimation);
-            _movement = false;
+            Movement = false;
         }
 
         protected void RotateObject(Vector3 point)

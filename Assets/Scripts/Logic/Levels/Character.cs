@@ -25,6 +25,8 @@ namespace Logic.Levels
 
         public ObjectColor ObjectColor => _objectColor;
         public DrawWithMouse DrawWithMouse => _drawWithMouse;
+        
+        public bool CompletedRoute { get; set; }
 
         private bool _movement;
         private Vector3[] _positions;
@@ -66,7 +68,6 @@ namespace Logic.Levels
                 {
                     _movement = false;
                     _playingSound.StopSound();
-                    _boxCollider.enabled = false;
                     SetAnimation(CharacterAnimations.Victory);
                 }
             }
@@ -98,7 +99,8 @@ namespace Logic.Levels
             if (col.TryGetComponent(out Animal animal))
             {
                 animal.AttackCharacter(gameObject.transform);
-                CollisionWithAnObstacle(animal.gameObject);
+                if (_dive == false)
+                    CollisionWithAnObstacle(animal.gameObject);
             }
         }
 
@@ -107,10 +109,14 @@ namespace Logic.Levels
             _movement = false;
             _clash.gameObject.SetActive(true);
             _clash.Play();
+            DisableCollider();
             SetAnimation(CharacterAnimations.Damage);
             _playingSound.StopSound();
             Faced?.Invoke(collision);
         }
+
+        public void DisableCollider() =>
+            _boxCollider.enabled = false;
 
         public void SetArrayOfPoints()
         {
@@ -133,8 +139,8 @@ namespace Logic.Levels
             Dived?.Invoke();
         }
 
-        private void SetAnimation(CharacterAnimations anim) =>
-            _animator.SetTrigger(anim.ToString());
+        private void SetAnimation(CharacterAnimations characterAnimations) =>
+            _animator.SetTrigger(characterAnimations.ToString());
 
         public void SetDivingPosition(Vector3 position) =>
             _divingPosition = position;

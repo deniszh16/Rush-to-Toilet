@@ -13,12 +13,12 @@ GameObject:
   - component: {fileID: 8469972660131027076}
   - component: {fileID: 7384559421729218877}
   - component: {fileID: 7964467964209045270}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Obstruction_Black
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1152411784427762827
 Transform:
@@ -182,7 +182,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &77601014658583790
 Transform:
