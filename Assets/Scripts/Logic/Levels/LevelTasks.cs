@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using Logic.Sounds;
 using Services.Achievements;
+using Services.Ads;
+using Services.GooglePlay;
 using Services.PersistentProgress;
 using Services.SaveLoad;
 using UnityEngine;
@@ -44,14 +46,18 @@ namespace Logic.Levels
         private IPersistentProgressService _progressService;
         private ISaveLoadService _saveLoadService;
         private IAchievementsService _achievementsService;
+        private IGooglePlayService _googlePlayService;
+        private IAdService _adService;
 
         [Inject]
         private void Construct(IPersistentProgressService progressService, ISaveLoadService saveLoadService,
-            IAchievementsService achievementsService)
+            IAchievementsService achievementsService, IGooglePlayService googlePlayService, IAdService adService)
         {
             _progressService = progressService;
             _saveLoadService = saveLoadService;
             _achievementsService = achievementsService;
+            _googlePlayService = googlePlayService;
+            _adService = adService;
         }
 
         private void Start()
@@ -127,12 +133,18 @@ namespace Logic.Levels
             
             _ = StartCoroutine(ShowLosingPanel());
             _losing = true;
-            
+
             if (reasonLosing.GetComponent<Character>())
+            {
                 _achievementsService.UnlockAchievement(2);
+                _googlePlayService.UnlockAchievement(GPGSIds.achievement_forehead_to_forehead);
+            }
 
             if (reasonLosing.GetComponent<Poop>())
+            {
                 _achievementsService.UnlockAchievement(5);
+                _googlePlayService.UnlockAchievement(GPGSIds.achievement_a_bad_odor);
+            }
         }
 
         private IEnumerator ShowLosingPanel()
@@ -151,8 +163,8 @@ namespace Logic.Levels
 
         private void ShowAds()
         {
-            //if (_number % 2 == 0)
-                //YandexGame.FullscreenShow();
+            if (_number % 2 == 0)
+                _adService.ShowInterstitialAd();
         }
 
         private void OnDestroy()

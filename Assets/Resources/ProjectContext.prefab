@@ -77,3 +77,4 @@ MonoBehaviour:
   _sceneLoader: {fileID: 1796065203499196023, guid: 7caeda4f437cd2346a623cc567342c5f, type: 3}
   _soundService: {fileID: 5845518434328556451, guid: 00dcc3ce49eaa4148a0647559bd54acd, type: 3}
   _achievementsService: {fileID: 8773692439171447183, guid: 944d05871de3bbe4091cab8844d509dc, type: 3}
+  _adService: {fileID: 2329709465822735440, guid: 26f681522dc053549b7360d9e0643b92, type: 3}

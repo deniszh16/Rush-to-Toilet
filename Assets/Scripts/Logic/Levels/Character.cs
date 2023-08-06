@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using Logic.Sounds;
 using UnityEngine;
 
@@ -29,6 +30,7 @@ namespace Logic.Levels
         public bool CompletedRoute { get; set; }
 
         private bool _movement;
+        private Vector2 _currentPosition;
         private Vector3[] _positions;
         private int _moveIndex;
 
@@ -53,15 +55,11 @@ namespace Logic.Levels
         {
             if (_movement)
             {
-                Vector2 currentPosition = _positions[_moveIndex];
+                _currentPosition = _positions[_moveIndex];
                 _parent.position = Vector2.MoveTowards(_parent.position, 
-                    currentPosition, _speed * Time.deltaTime);
+                    _currentPosition, _speed * Time.deltaTime);
 
-                _parent.rotation = currentPosition.x > _parent.position.x
-                    ? Quaternion.Euler(Vector3.zero)
-                    : Quaternion.Euler(_moveToLeft);
-                
-                float distance = Vector2.Distance(currentPosition, _parent.position);
+                float distance = Vector2.Distance(_currentPosition, _parent.position);
                 if (distance < 0.05f) _moveIndex++;
 
                 if (_moveIndex > _positions.Length - 1)
@@ -131,6 +129,19 @@ namespace Logic.Levels
             Moving?.Invoke();
             _playingSound.PlaySound();
             SetAnimation(CharacterAnimations.Run);
+            _ = StartCoroutine(RotateCharacter());
+        }
+        
+        private IEnumerator RotateCharacter()
+        {
+            var seconds = new WaitForSeconds(0.1f);
+            while (_movement)
+            {
+                yield return seconds;
+                _parent.rotation = _currentPosition.x > _parent.position.x
+                    ? Quaternion.Euler(Vector3.zero)
+                    : Quaternion.Euler(_moveToLeft);
+            }
         }
 
         public void StartDive()

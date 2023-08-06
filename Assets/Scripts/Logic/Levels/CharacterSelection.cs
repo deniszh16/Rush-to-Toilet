@@ -10,7 +10,7 @@ namespace Logic.Levels
 
         [Header("Слой объектов")]
         [SerializeField] private LayerMask _layerMask;
-        
+
         private const float RayLength = 30f;
 
         private RaycastHit2D _hit;
@@ -71,7 +71,7 @@ namespace Logic.Levels
                         _activeCharacter.CompletedRoute = true;
                         _activeCharacter.DrawWithMouse.DrawingActivity = false;
                         _activeCharacter.SetArrayOfPoints();
-                        _activeCharacter.SetDivingPosition(toilet.transform.GetChild(1).position);
+                        _activeCharacter.SetDivingPosition(toilet.DivingPosition.position);
                         _activeCharacter.DrawWithMouse.RecordNumberOfPoints();
                         _levelTasks.AddLine();
                         return;

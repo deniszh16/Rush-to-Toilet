@@ -255,6 +255,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _objectColor: 1
+  _divingPosition: {fileID: 780448612154626123}
   _animator: {fileID: 2083111852214902450}
   _playingSound: {fileID: 6240917802086188510}
   _spray: {fileID: 2536137089281091828}

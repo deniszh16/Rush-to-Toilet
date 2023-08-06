@@ -9,6 +9,9 @@ namespace Logic.Levels
         [Header("Цвет объекта")]
         [SerializeField] private ObjectColor _objectColor;
         
+        [Header("Позиция погружения")]
+        [SerializeField] private Transform _divingPosition;
+        
         [Header("Анимация туалета")]
         [SerializeField] private Animator _animator;
         
@@ -23,6 +26,7 @@ namespace Logic.Levels
         private Character _attachedCharacter;
 
         public ObjectColor ObjectColor => _objectColor;
+        public Transform DivingPosition => _divingPosition;
 
         public event Action ToiletIsFull;
 
