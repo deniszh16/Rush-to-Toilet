@@ -134,13 +134,16 @@ namespace Logic.Levels
         
         private IEnumerator RotateCharacter()
         {
-            var seconds = new WaitForSeconds(0.1f);
+            var seconds = new WaitForSeconds(0.2f);
             while (_movement)
             {
                 yield return seconds;
-                _parent.rotation = _currentPosition.x > _parent.position.x
-                    ? Quaternion.Euler(Vector3.zero)
-                    : Quaternion.Euler(_moveToLeft);
+                if (Mathf.Abs(_currentPosition.x - _parent.position.x) > 0.02f)
+                {
+                    _parent.rotation = _currentPosition.x > _parent.position.x
+                        ? Quaternion.Euler(Vector3.zero)
+                        : Quaternion.Euler(_moveToLeft);
+                }
             }
         }
 

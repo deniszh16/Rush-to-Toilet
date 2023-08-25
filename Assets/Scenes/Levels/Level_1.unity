@@ -67,9 +67,6 @@ LightmapSettings:
     m_LightmapParameters: {fileID: 0}
     m_LightmapsBakeMode: 1
     m_TextureCompression: 1
-    m_FinalGather: 0
-    m_FinalGatherFiltering: 1
-    m_FinalGatherRayCount: 256
     m_ReflectionCompression: 2
     m_MixedBakeMode: 2
     m_BakeBackend: 0
@@ -952,6 +949,7 @@ MonoBehaviour:
   - {fileID: 6309410737767049595}
   - {fileID: 927731140}
   _victoryPanel: {fileID: 8270881917189201899}
+  _hintsButton: {fileID: 8270881917189201900}
   _confetti:
   - {fileID: 2825816618905016201}
   - {fileID: 7384049738980206926}
@@ -2492,7 +2490,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &1837569999
 Animator:
-  serializedVersion: 5
+  serializedVersion: 7
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -2506,6 +2504,7 @@ Animator:
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
@@ -3440,6 +3439,10 @@ PrefabInstance:
       propertyPath: _levelTasks
       value: 
       objectReference: {fileID: 693526527}
+    - target: {fileID: 7364623676410881079, guid: 9ff8a7bcf163b6c449c4f473049018b5, type: 3}
+      propertyPath: m_Interactable
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8526923877335713231, guid: 9ff8a7bcf163b6c449c4f473049018b5, type: 3}
       propertyPath: _levelTasks
       value: 
@@ -3461,6 +3464,11 @@ GameObject:
 --- !u!1 &8270881917189201899 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6132287437059683542, guid: 9ff8a7bcf163b6c449c4f473049018b5, type: 3}
+  m_PrefabInstance: {fileID: 8270881917189201897}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &8270881917189201900 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 7852116971538307691, guid: 9ff8a7bcf163b6c449c4f473049018b5, type: 3}
   m_PrefabInstance: {fileID: 8270881917189201897}
   m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807

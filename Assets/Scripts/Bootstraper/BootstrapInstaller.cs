@@ -1,11 +1,12 @@
-using Services.Achievements;
-using Services.Ads;
-using Services.GooglePlay;
-using Services.Localization;
+using PimDeWitte.UnityMainThreadDispatcher;
 using Services.PersistentProgress;
-using Services.SaveLoad;
+using Services.Achievements;
+using Services.Localization;
+using Services.GooglePlay;
 using Services.SceneLoader;
+using Services.SaveLoad;
 using Services.Sound;
+using Services.Ads;
 using UnityEngine;
 using Zenject;
 
@@ -16,7 +17,7 @@ namespace Bootstraper
         [SerializeField] private SceneLoaderService _sceneLoader;
         [SerializeField] private SoundService _soundService;
         [SerializeField] private AchievementsService _achievementsService;
-        [SerializeField] private AdService _adService;
+        [SerializeField] private UnityMainThreadDispatcher _dispatcher;
         
         private IPersistentProgressService _progressService;
         private ISaveLoadService _saveLoadService;
@@ -31,6 +32,7 @@ namespace Bootstraper
             BindGooglePlayService();
             BindAchievementsService();
             BindAdService();
+            BindUnityMainThreadDispatcher();
         }
         
         private void BindPersistentProgress()
@@ -79,8 +81,14 @@ namespace Bootstraper
 
         private void BindAdService()
         {
-            AdService adService = Container.InstantiatePrefabForComponent<AdService>(_adService);
-            Container.Bind<IAdService>().To<AdService>().FromInstance(adService).AsSingle();
+            IAdService adService = new AdService();
+            Container.BindInstance(adService).AsSingle();
+        }
+        
+        private void BindUnityMainThreadDispatcher()
+        {
+            UnityMainThreadDispatcher dispatcher = Container.InstantiatePrefabForComponent<UnityMainThreadDispatcher>(_dispatcher);
+            Container.BindInstance(dispatcher).AsSingle();
         }
     }
 }

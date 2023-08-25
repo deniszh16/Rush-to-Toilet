@@ -160,3 +160,9 @@ MonoBehaviour:
       \u043A\u0430\u043A\u0438\u0445 \u0443\u0440\u043E\u0432\u043D\u0435\u0439 \u0432\u044B
       \u0436\u0434\u0435\u0442\u0435 \u0431\u043E\u043B\u044C\u0448\u0435."
     English: Write in the reviews what levels you are looking forward to more.
+  - Key: close
+    Russian: "\u0417\u0430\u043A\u0440\u044B\u0442\u044C"
+    English: Close
+  - Key: leaderboard
+    Russian: "\u041B\u0438\u0434\u0435\u0440\u044B"
+    English: Leaderboard

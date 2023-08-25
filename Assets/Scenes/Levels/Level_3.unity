@@ -67,9 +67,6 @@ LightmapSettings:
     m_LightmapParameters: {fileID: 0}
     m_LightmapsBakeMode: 1
     m_TextureCompression: 1
-    m_FinalGather: 0
-    m_FinalGatherFiltering: 1
-    m_FinalGatherRayCount: 256
     m_ReflectionCompression: 2
     m_MixedBakeMode: 2
     m_BakeBackend: 0
@@ -1916,6 +1913,7 @@ MonoBehaviour:
   - {fileID: 6309410737767049595}
   - {fileID: 927731140}
   _victoryPanel: {fileID: 1554766239}
+  _hintsButton: {fileID: 1554766240}
   _confetti:
   - {fileID: 2825816618905016201}
   - {fileID: 7384049738980206926}
@@ -4789,6 +4787,11 @@ GameObject:
 --- !u!1 &1554766239 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6132287437059683542, guid: 9ff8a7bcf163b6c449c4f473049018b5, type: 3}
+  m_PrefabInstance: {fileID: 1554766237}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &1554766240 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 7852116971538307691, guid: 9ff8a7bcf163b6c449c4f473049018b5, type: 3}
   m_PrefabInstance: {fileID: 1554766237}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1603719316

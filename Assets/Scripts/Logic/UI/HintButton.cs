@@ -35,6 +35,7 @@ namespace Logic.UI
             if (_progressService.UserProgress.Hints > 0)
             {
                 _hints.SetActive(true);
+                _button.interactable = false;
                 _progressService.UserProgress.ChangeHints(value: -1);
                 _progressService.UserProgress.HintsUsed += 1;
                 _saveLoadService.SaveProgress();

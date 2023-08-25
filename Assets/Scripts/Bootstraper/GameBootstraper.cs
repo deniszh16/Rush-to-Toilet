@@ -27,7 +27,10 @@ namespace Bootstraper
             _soundService = soundService;
             _localizationService = localizationService;
         }
-        
+
+        private void Awake() =>
+            Screen.sleepTimeout = SleepTimeout.NeverSleep;
+
         private void Start()
         {
             LoadProgressOrInitNew();

@@ -1,10 +1,10 @@
 ﻿using System.Collections;
-using Logic.Sounds;
-using Services.Achievements;
-using Services.Ads;
-using Services.GooglePlay;
 using Services.PersistentProgress;
+using Services.Achievements;
+using Services.GooglePlay;
 using Services.SaveLoad;
+using Logic.Sounds;
+using Services.Ads;
 using UnityEngine;
 using Zenject;
 
@@ -163,7 +163,8 @@ namespace Logic.Levels
 
         private void ShowAds()
         {
-            if (_number % 2 == 0)
+            AdsCounter.Counter++;
+            if (AdsCounter.Counter % 4 == 0)
                 _adService.ShowInterstitialAd();
         }
 
