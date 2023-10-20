@@ -1,7 +1,5 @@
-﻿using System;
-using AppodealStack.Monetization.Api;
+﻿using AppodealStack.Monetization.Api;
 using AppodealStack.Monetization.Common;
-using UnityEngine;
 
 namespace Services.Ads
 {
@@ -9,21 +7,17 @@ namespace Services.Ads
     {
         private const string AppKey = "45af83962ea33ae0f7573cd3afcbd7232daafb7e08885f87";
 
-        public AdService()
+        public void Initialization()
         {
             Appodeal.MuteVideosIfCallsMuted(true);
-            Initialization();
-        }
-
-        private void Initialization()
-        {
             int adTypes = AppodealAdType.Interstitial | AppodealAdType.RewardedVideo;
             AppodealCallbacks.Sdk.OnInitialized += OnInitializationFinished;
             Appodeal.Initialize(AppKey, adTypes);
         }
-        
-        private void OnInitializationFinished(object sender, SdkInitializedEventArgs e) =>
-            Debug.Log("Advertising initialized!");
+
+        private void OnInitializationFinished(object sender, SdkInitializedEventArgs e)
+        {
+        }
 
         public void ShowInterstitialAd()
         {

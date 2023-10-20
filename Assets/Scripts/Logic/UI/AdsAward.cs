@@ -30,13 +30,9 @@ namespace Logic.UI
         {
             _rewardTypes = RewardTypes.Hints;
             AppodealCallbacks.RewardedVideo.OnClosed += OnRewardedVideoClosed;
-            //AppodealCallbacks.RewardedVideo.OnFinished += OnRewardedVideoFinished;
         }
         
         private void OnRewardedVideoClosed(object sender, RewardedVideoClosedEventArgs e) =>
-            UnityMainThreadDispatcher.Instance().Enqueue(ChooseReward);
-
-        private void OnRewardedVideoFinished(object sender, RewardedVideoFinishedEventArgs e) =>
             UnityMainThreadDispatcher.Instance().Enqueue(ChooseReward);
 
         private void ChooseReward()
@@ -57,10 +53,7 @@ namespace Logic.UI
         public void ChangeRewardType(RewardTypes rewardTypes) =>
             _rewardTypes = rewardTypes;
 
-        private void OnDestroy()
-        {
+        private void OnDestroy() =>
             AppodealCallbacks.RewardedVideo.OnClosed -= OnRewardedVideoClosed;
-            //AppodealCallbacks.RewardedVideo.OnFinished -= OnRewardedVideoFinished;
-        }
     }
 }

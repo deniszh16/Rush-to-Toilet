@@ -83,11 +83,13 @@ namespace Bootstraper
         {
             IAdService adService = new AdService();
             Container.BindInstance(adService).AsSingle();
+            adService.Initialization();
         }
         
         private void BindUnityMainThreadDispatcher()
         {
-            UnityMainThreadDispatcher dispatcher = Container.InstantiatePrefabForComponent<UnityMainThreadDispatcher>(_dispatcher);
+            UnityMainThreadDispatcher dispatcher =
+                Container.InstantiatePrefabForComponent<UnityMainThreadDispatcher>(_dispatcher);
             Container.BindInstance(dispatcher).AsSingle();
         }
     }
