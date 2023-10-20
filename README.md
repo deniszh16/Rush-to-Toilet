@@ -3,8 +3,8 @@
 </p>
 
 <p align="center">
-   <img src="https://img.shields.io/badge/Engine-Unity%202023.1.9f1-brightgreen" alt="Unity Version">
-   <img src="https://img.shields.io/badge/Version-1.0.5%20(Stable)-blue" alt="Game Version">
+   <img src="https://img.shields.io/badge/Engine-Unity%202023.1.16f1-brightgreen" alt="Unity Version">
+   <img src="https://img.shields.io/badge/Version-1.0.8%20(Stable)-blue" alt="Game Version">
 </p>
 
 ## Описание игры
