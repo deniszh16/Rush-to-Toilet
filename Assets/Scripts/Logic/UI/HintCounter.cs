@@ -17,15 +17,15 @@ namespace Logic.UI
             _progressService = progressService;
         
         private void Awake() =>
-            _progressService.UserProgress.HintsChanged += UpdateNumberOfHints;
+            _progressService.GetUserProgress.HintsChanged += UpdateNumberOfHints;
 
         private void Start() =>
             UpdateNumberOfHints();
 
         private void UpdateNumberOfHints() =>
-            _textComponent.text = _progressService.UserProgress.Hints.ToString();
+            _textComponent.text = _progressService.GetUserProgress.Hints.ToString();
 
         private void OnDestroy() =>
-            _progressService.UserProgress.HintsChanged -= UpdateNumberOfHints;
+            _progressService.GetUserProgress.HintsChanged -= UpdateNumberOfHints;
     }
 }

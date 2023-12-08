@@ -39,13 +39,13 @@ namespace Logic.UI
         {
             if (_rewardTypes == RewardTypes.Hints)
             {
-                _progressService.UserProgress.ChangeHints(2);
+                _progressService.GetUserProgress.ChangeHints(2);
                 _saveLoadService.SaveProgress();
             }
             else
             {
                 _nextButton.SetActive(true);
-                _progressService.UserProgress.Progress += 1;
+                _progressService.GetUserProgress.Progress += 1;
                 _saveLoadService.SaveProgress();
             }
         }

@@ -14,7 +14,7 @@ namespace Services.SaveLoad
             _persistentProgress = progressService;
         
         public void SaveProgress() =>
-            PlayerPrefs.SetString(ProgressKey, _persistentProgress.UserProgress.ToJson());
+            PlayerPrefs.SetString(ProgressKey, _persistentProgress.GetUserProgress.ToJson());
 
         public UserProgress LoadProgress() =>
             PlayerPrefs.GetString(ProgressKey)?.ToDeserialized<UserProgress>();

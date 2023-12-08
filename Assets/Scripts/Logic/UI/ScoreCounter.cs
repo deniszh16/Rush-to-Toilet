@@ -17,15 +17,15 @@ namespace Logic.UI
             _progressService = progressService;
 
         private void Awake() =>
-            _progressService.UserProgress.ScoreChanged += UpdateScore;
+            _progressService.GetUserProgress.ScoreChanged += UpdateScore;
 
         private void Start() =>
             UpdateScore();
 
         private void UpdateScore() =>
-            _textComponent.text = _progressService.UserProgress.Score.ToString();
+            _textComponent.text = _progressService.GetUserProgress.Score.ToString();
 
         private void OnDestroy() =>
-            _progressService.UserProgress.ScoreChanged -= UpdateScore;
+            _progressService.GetUserProgress.ScoreChanged -= UpdateScore;
     }
 }

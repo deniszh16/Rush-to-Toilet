@@ -28,7 +28,7 @@ namespace Logic.UI
 
         private void Awake()
         {
-            if (_progressService.UserProgress.Progress >= _number)
+            if (_progressService.GetUserProgress.Progress >= _number)
             {
                 _buttonImage.sprite = _activeButton;
                 _button.interactable = true;

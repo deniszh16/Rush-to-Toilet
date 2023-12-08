@@ -26,7 +26,7 @@ namespace Logic.UI
 
         private void GoToLevel()
         {
-            int number = _progressService.UserProgress.Progress;
+            int number = _progressService.GetUserProgress.Progress;
             _sceneLoaderService.LoadLevelAsync(number);
         }
 

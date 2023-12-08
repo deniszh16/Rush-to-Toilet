@@ -39,15 +39,15 @@ namespace Services.Localization
 
         public void SwitchLanguage()
         {
-            Languages language = _progressService.UserProgress.LanguageData.Language;
+            Languages language = _progressService.GetUserProgress.LanguageData.Language;
             if (language == Languages.Russian)
             {
-                _progressService.UserProgress.LanguageData.SetLanguage(Languages.English);
+                _progressService.GetUserProgress.LanguageData.SetLanguage(Languages.English);
                 CurrentLanguage = Languages.English;
             }
             else
             {
-                _progressService.UserProgress.LanguageData.SetLanguage(Languages.Russian);
+                _progressService.GetUserProgress.LanguageData.SetLanguage(Languages.Russian);
                 CurrentLanguage = Languages.Russian;
             }
             

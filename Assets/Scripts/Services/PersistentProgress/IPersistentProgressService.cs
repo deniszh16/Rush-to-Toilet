@@ -4,6 +4,6 @@ namespace Services.PersistentProgress
 {
     public interface IPersistentProgressService
     {
-        public UserProgress UserProgress { get; set; }
+        public UserProgress GetUserProgress { get; set; }
     }
 }

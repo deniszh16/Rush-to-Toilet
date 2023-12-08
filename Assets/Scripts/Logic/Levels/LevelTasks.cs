@@ -113,16 +113,16 @@ namespace Logic.Levels
                 points += character.DrawWithMouse.AmountOfPoints;
             
             int score = _number * 100 - points / 10;
-            if (score > 0) _progressService.UserProgress.Score += score;
+            if (score > 0) _progressService.GetUserProgress.Score += score;
             
-            if (_progressService.UserProgress.Progress <= _number) 
-                _progressService.UserProgress.Progress += 1;
+            if (_progressService.GetUserProgress.Progress <= _number) 
+                _progressService.GetUserProgress.Progress += 1;
 
-            if (_labyrinth) _progressService.UserProgress.LabyrinthLevels += 1;
-            if (_characters.Length >= 3) _progressService.UserProgress.LevelsWithThreeCharacters += 1;
-            _progressService.UserProgress.DrawnLines += _linesDrawn;
+            if (_labyrinth) _progressService.GetUserProgress.LabyrinthLevels += 1;
+            if (_characters.Length >= 3) _progressService.GetUserProgress.LevelsWithThreeCharacters += 1;
+            _progressService.GetUserProgress.DrawnLines += _linesDrawn;
             
-            _progressService.UserProgress.AddAttempt(_number, victory: true);
+            _progressService.GetUserProgress.AddAttempt(_number, victory: true);
             _saveLoadService.SaveProgress();
             _achievementsService.StartAchievementCheck();
         }
@@ -154,9 +154,9 @@ namespace Logic.Levels
             _audioSource.clip = _losingSound;
             _playingSound.PlaySound();
 
-            _progressService.UserProgress.Score += 1;
-            _progressService.UserProgress.AddAttempt(_number, victory: false);
-            _progressService.UserProgress.DrawnLines += _linesDrawn;
+            _progressService.GetUserProgress.Score += 1;
+            _progressService.GetUserProgress.AddAttempt(_number, victory: false);
+            _progressService.GetUserProgress.DrawnLines += _linesDrawn;
             _saveLoadService.SaveProgress();
             ShowAds();
         }

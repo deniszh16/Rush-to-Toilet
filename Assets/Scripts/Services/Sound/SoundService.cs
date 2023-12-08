@@ -29,20 +29,20 @@ namespace Services.Sound
         
         public void SwitchSound()
         {
-            bool activity = _progressService.UserProgress.SoundData.SoundActivity;
+            bool activity = _progressService.GetUserProgress.SoundData.SoundActivity;
             
             SoundActivity = !activity;
-            _progressService.UserProgress.SoundData.ChangeActivityOfSounds(SoundActivity);
+            _progressService.GetUserProgress.SoundData.ChangeActivityOfSounds(SoundActivity);
             _saveLoadService.SaveProgress();
             SoundChanged?.Invoke();
         }
 
         public void SwitchMusic()
         {
-            bool activity = _progressService.UserProgress.SoundData.MusicActivity;
+            bool activity = _progressService.GetUserProgress.SoundData.MusicActivity;
 
             MusicActivity = !activity;
-            _progressService.UserProgress.SoundData.ChangeActivityOfMusic(MusicActivity);
+            _progressService.GetUserProgress.SoundData.ChangeActivityOfMusic(MusicActivity);
             _saveLoadService.SaveProgress();
             BackgroundMusicActivation(MusicActivity);
             MusicChanged?.Invoke();
